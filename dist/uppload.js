@@ -714,7 +714,6 @@ export class Uppload {
         if (cancelButton)
             safeListen(cancelButton, "click", () => {
                 this.file = { blob: new Blob() };
-                this.activeService = "default";
                 this.activeEffect = "";
                 this.update();
             });
