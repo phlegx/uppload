@@ -311,7 +311,7 @@ export class Uppload {
             .filter((service) => !service.invisible)
             .map((service) => `<div data-uppload-service="${service.name}" class="uppload-service-name">
           ${sidebar
-            ? `<input type="radio" id="uppload-service-radio-${service.name}" value="${service.name}" name="uppload-radio">`
+            ? `<input type="radio" id="uppload-service-radio-${service.name}" value="${service.name}" name="uppload-radio" ${service.name === this.activeService ? "checked" : ""}>`
             : ""}
           <${sidebar
             ? `label for="uppload-service-radio-${service.name}"`
