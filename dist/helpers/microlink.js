@@ -13,7 +13,7 @@ export class MicrolinkBaseClass extends UpploadService {
         this.loading = false;
         this.exampleURL = "";
         this.validator = () => true;
-        this.template = ({ translate }) => {
+        this.template = ({ translate, uppload }) => {
             return `
       <div class="microlink-container">
       <form class="microlink-search-form">
@@ -34,7 +34,9 @@ export class MicrolinkBaseClass extends UpploadService {
                 ""}" required>
         </label>
         <button type="submit" style="background: ${this.color}">${translate(`services.${this.name}.button`) ||
-                translate("services.microlink.button", translate(`services.${this.name}.title`) || this.name)}</button></form><button class="need-help-link"><span>${translate("needHelp")}</span aria-hidden="true"><span>?</span></button></div>
+                translate("services.microlink.button", translate(`services.${this.name}.title`) || this.name)}</button></form>
+                ${!uppload.settings.disableHelp ? `<button class="need-help-link"><span>${translate("needHelp")}</span aria-hidden="true"><span>?</span></button>` : ""}
+                </div>
     <div class="uppload-loader microlink-loader">
     <div></div>
     <p>${translate(`services.${this.name}.loading`) ||

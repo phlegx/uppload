@@ -16,7 +16,8 @@ export default class Local extends UpploadService {
       <button class="uppload-button uppload-button--cta" style="background: ${this.color}">${params.translate("services.local.button")}</button>
     </div>
       <div class="alternate-input">
-        <input type="file" accept="${this.mimeTypes.join()}"${params.uppload.settings.multiple ? " multiple" : ""}></div><button class="need-help-link"><span>${translate("needHelp")}</span aria-hidden="true"><span>?</span></button>`;
+        <input type="file" accept="${this.mimeTypes.join()}"${params.uppload.settings.multiple ? " multiple" : ""}></div>
+        ${!params.uppload.settings.disableHelp ? `<button class="need-help-link"><span>${translate("needHelp")}</span aria-hidden="true"><span>?</span></button>` : ""}`;
         };
         this.handlers = (params) => {
             const dropArea = params.uppload.container.querySelector(".drop-area");

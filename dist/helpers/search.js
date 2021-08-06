@@ -17,7 +17,7 @@ export class SearchBaseClass extends UpploadService {
         this.results = [];
         this.loading = false;
         this.noRecolor = false;
-        this.template = ({ translate }) => {
+        this.template = ({ translate, uppload }) => {
             return `
       <div class="search-container"><form class="search-search-form">
       <div class="service-icon">${colorSVG(this.icon, this)}</div>
@@ -28,7 +28,7 @@ export class SearchBaseClass extends UpploadService {
       </form>
       <div class="search-images"></div>
       <p class="search-footer">${translate("services.search.imagesPoweredBy", `<a href="${this.poweredByUrl}" target="_blank">${translate(`services.${this.name}.title`)}</a>`)}</p></div>
-      <button class="need-help-link"><span>${translate("needHelp")}</span aria-hidden="true"><span>?</span></button>
+      ${!uppload.settings.disableHelp ? `<button class="need-help-link"><span>${translate("needHelp")}</span aria-hidden="true"><span>?</span></button>` : ""}
       <div class="uppload-loader search-loader">
         <div></div>
         <p>${translate("fetching", translate(`services.${this.name}.title`))}</p>

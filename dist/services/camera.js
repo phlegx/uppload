@@ -14,7 +14,7 @@ export default class Camera extends UpploadService {
         this.supports = () => !!(window.navigator.mediaDevices &&
             window.navigator.mediaDevices.enumerateDevices &&
             !/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
-        this.template = ({ translate }) => {
+        this.template = ({ translate, uppload }) => {
             return `
       <div class="service-main">
         <div class="camera-waiting">${translate("services.camera.waiting")}</div>
@@ -35,7 +35,7 @@ export default class Camera extends UpploadService {
           style="background: ${this.color}"
         >${translate("services.camera.button")}</button>
       </footer>
-      <button class="need-help-link"><span>${translate("needHelp")}</span aria-hidden="true"><span>?</span></button>
+      ${!uppload.settings.disableHelp ? `<button class="need-help-link"><span>${translate("needHelp")}</span aria-hidden="true"><span>?</span></button>` : ""}
     `;
         };
         this.stop = () => {
