@@ -195,17 +195,19 @@ export class Uppload {
         this.file = { blob: new Blob() };
         this.activeService = "default";
         this.activeEffect = "";
-        const serviceRadio = this.container.querySelector(`input[type=radio][value='${this.activeService}']`);
-        if (serviceRadio)
-            serviceRadio.setAttribute("checked", "checked");
         this.container.style.transition = `${this.transitionDuration}ms`;
         this.container.style.opacity = "0";
         this.update();
         let firstService = this.settings.defaultService;
-        if (this.services.length === 3)
-            this.navigate(this.services[2].name);
         if (firstService)
             this.navigate(firstService);
+        else if (this.services.length === 3)
+            this.navigate(this.services[2].name);
+        const serviceRadio = this.container.querySelector(`input[type=radio][value='${this.activeService}']`);
+        if (serviceRadio) {
+            serviceRadio.setAttribute("checked", "checked");
+            serviceRadio.checked = true;
+        }
         safeListen(document.body, "keyup", (e) => {
             if (e.key === "Escape" && this.open)
                 this.close();
@@ -311,7 +313,7 @@ export class Uppload {
             .filter((service) => !service.invisible)
             .map((service) => `<div data-uppload-service="${service.name}" class="uppload-service-name">
           ${sidebar
-            ? `<input type="radio" id="uppload-service-radio-${service.name}" value="${service.name}" name="uppload-radio" ${service.name === this.activeService ? "checked" : ""}>`
+            ? `<input type="radio" id="uppload-service-radio-${service.name}" value="${service.name}" name="uppload-radio" ${service.name === this.activeService ? `checked="checked"` : ""}>`
             : ""}
           <${sidebar
             ? `label for="uppload-service-radio-${service.name}"`
@@ -631,6 +633,11 @@ export class Uppload {
         defaultServiceLinks.forEach((link) => {
             const linkFunction = (e) => {
                 const service = link.getAttribute("data-uppload-service");
+                const serviceRadio = this.container.querySelector(`input[type=radio][value='${service}']`);
+                if (serviceRadio) {
+                    serviceRadio.setAttribute("checked", "checked");
+                    serviceRadio.checked = true;
+                }
                 if (service) {
                     this.navigate(service);
                     const serviceDiv = this.container.querySelector(`[data-uppload-service="${service}"]`);
@@ -650,9 +657,6 @@ export class Uppload {
                         catch (error) { }
                     }
                 }
-                const serviceRadio = this.container.querySelector(`input[type=radio][value='${service}']`);
-                if (serviceRadio)
-                    serviceRadio.setAttribute("checked", "checked");
                 e.preventDefault();
                 return false;
             };
