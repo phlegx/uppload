@@ -46,10 +46,9 @@ export const safeListen = (element, type, fn) => {
  */
 export const safeUnlisten = (element, type, fn) => {
     const listener = listening.findIndex((a) => a.element === element && a.type === type);
-    if (listener > -1) {
-      element.removeEventListener(type, fn);
-      listening.splice(listener, 1);
-    }
+    if (listener < 0) return;
+    element.removeEventListener(type, fn);
+    listening.splice(listener, 1);
 };
 const safeRequestAnimationFrame = (callback) => {
     if (window.requestAnimationFrame)
