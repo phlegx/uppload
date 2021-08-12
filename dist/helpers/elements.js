@@ -38,6 +38,19 @@ export const safeListen = (element, type, fn) => {
     element.addEventListener(type, fn);
     listening.push({ element, type });
 };
+/**
+ * Safely remove an event listener
+ * @param element - HTML element to remove event listener to
+ * @param type - Type of event listener to remove
+ * @param fn - Callback function to associated listener
+ */
+export const safeUnlisten = (element, type, fn) => {
+    const listener = listening.findIndex((a) => a.element === element && a.type === type);
+    if (listener > -1) {
+      element.removeEventListener(type, fn);
+      listening.splice(listener, 1);
+    }
+};
 const safeRequestAnimationFrame = (callback) => {
     if (window.requestAnimationFrame)
         return window.requestAnimationFrame(callback);

@@ -1,6 +1,6 @@
 import { UpploadService } from "./service";
 import { setI18N, translate } from "./helpers/i18n";
-import { getElements, safeListen, compressImage } from "./helpers/elements";
+import { getElements, safeListen, safeUnlisten, compressImage } from "./helpers/elements";
 import { colorSVG } from "./helpers/assets";
 import createFocusTrap from "focus-trap";
 import mitt from "mitt";
@@ -33,6 +33,7 @@ export class Uppload {
      * @param settings - Uppload instance settings
      */
     constructor(settings) {
+        this.id = +new Date()
         this.services = [new DefaultService(), new UploadingService()];
         this.effects = [];
         this.isOpen = false;
@@ -47,6 +48,7 @@ export class Uppload {
         this.settings = {};
         this.updateSettings(settings || {});
         const div = document.createElement("div");
+        div.setAttribute("id", `uppload-${this.id}`);
         this.renderContainer();
         div.classList.add("uppload-container");
         const body = document.body;
@@ -80,6 +82,8 @@ export class Uppload {
     updateSettings(settings) {
         this.settings = Object.assign(Object.assign({}, this.settings), settings);
         this.emitter.emit("settingsUpdated", settings);
+        if (settings.id)
+            this.id = settings.id;
         if (settings.lang)
             setI18N(settings.lang);
         if (settings.defaultService)
@@ -208,10 +212,13 @@ export class Uppload {
             serviceRadio.setAttribute("checked", "checked");
             serviceRadio.checked = true;
         }
-        safeListen(document.body, "keyup", (e) => {
-            if (e.key === "Escape" && this.open)
+        const escape = (e) => {
+            if (e.key === "Escape" && this.open) {
                 this.close();
-        });
+            }
+        };
+        safeUnlisten(document.body, "keyup", escape);
+        safeListen(document.body, "keyup", escape);
         setTimeout(() => {
             this.container.style.opacity = "1";
         }, 1);
@@ -313,10 +320,10 @@ export class Uppload {
             .filter((service) => !service.invisible)
             .map((service) => `<div data-uppload-service="${service.name}" class="uppload-service-name">
           ${sidebar
-            ? `<input type="radio" id="uppload-service-radio-${service.name}" value="${service.name}" name="uppload-radio" ${service.name === this.activeService ? `checked="checked"` : ""}>`
+            ? `<input type="radio" id="uppload-service-radio-${service.name}-${this.id}" value="${service.name}" name="uppload-radio" ${service.name === this.activeService ? `checked="checked"` : ""}>`
             : ""}
           <${sidebar
-            ? `label for="uppload-service-radio-${service.name}"`
+            ? `label for="uppload-service-radio-${service.name}-${this.id}"`
             : "button"} data-uppload-service="${service.name}">
             ${service.icon.indexOf("http") === 0
             ? `<img class="service-icon" alt="" src="${service.icon}">`
@@ -340,8 +347,8 @@ export class Uppload {
   </div><div class="effects-tabs"><div class="effects-tabs-flow">
       ${this.effects
             .map((effect) => `
-      <input type="radio" id="uppload-effect-radio-${effect.name}" value="${effect.name}" name="uppload-effect-radio">
-        <label for="uppload-effect-radio-${effect.name}">
+      <input type="radio" id="uppload-effect-radio-${effect.name}-${this.id}" value="${effect.name}" name="uppload-effect-radio">
+        <label for="uppload-effect-radio-${effect.name}-${this.id}">
           ${effect.icon.indexOf("http") === 0
             ? `<img class="effect-icon" alt="" src="${effect.icon}">`
             : colorSVG(effect.icon, effect)}
@@ -553,8 +560,10 @@ export class Uppload {
         }
         // Set active state to current effect
         const activeRadio = this.container.querySelector(`input[name='uppload-effect-radio'][value='${this.activeEffect}']`);
-        if (activeRadio)
+        if (activeRadio) {
             activeRadio.setAttribute("checked", "checked");
+            activeRadio.checked = true;
+        }
     }
     compress(file) {
         if (this.settings.compressionFromMimes &&
