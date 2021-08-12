@@ -51,9 +51,9 @@ export class Uppload {
         div.setAttribute("id", `uppload-${this.id}`);
         this.renderContainer();
         div.classList.add("uppload-container");
-        const body = document.body;
-        if (body) {
-            body.appendChild(div);
+        const wrapper = this.wrapper ? document.querySelector(this.wrapper) : document.body;
+        if (wrapper) {
+            wrapper.appendChild(div);
         }
         this.container = div;
         this.focusTrap = createFocusTrap(this.container, {
@@ -84,6 +84,8 @@ export class Uppload {
         this.emitter.emit("settingsUpdated", settings);
         if (settings.id)
             this.id = settings.id;
+        if (settings.wrapper)
+            this.wrapper = settings.wrapper;
         if (settings.lang)
             setI18N(settings.lang);
         if (settings.defaultService)
@@ -202,7 +204,7 @@ export class Uppload {
         this.container.style.transition = `${this.transitionDuration}ms`;
         this.container.style.opacity = "0";
         this.update();
-        let firstService = this.settings.defaultService;
+        const firstService = this.settings.defaultService;
         if (firstService)
             this.navigate(firstService);
         else if (this.services.length === 3)
