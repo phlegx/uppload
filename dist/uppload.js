@@ -213,7 +213,7 @@ export class Uppload {
             serviceRadio.checked = true;
         }
         const escape = (e) => {
-            if (e.key === "Escape" && this.open) {
+            if (e.key === "Escape" && this.isOpen) {
                 this.close();
             }
         };
