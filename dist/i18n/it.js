@@ -1,12 +1,12 @@
 export const it = {
-    upload: "Caricare",
-    cancel: "Annulla",
-    close: "Vicino",
-    uploading: "Carica ...",
+    upload: "carica",
+    cancel: "annulla",
+    close: "chiudi",
+    uploading: "Carica...",
     uploaded: "caricato",
-    fetching: "Ottieni immagine da $1$ ...",
+    fetching: "Ottieni immagine da $1$...",
     poweredBy: "Reso possibile da $1$",
-    needHelp: "Hai bisogno di aiuto?",
+    needHelp: "Bisogno di aiuto?",
     units: {
         px: "px",
         "%": "%",
@@ -24,7 +24,7 @@ export const it = {
     },
     help: {
         loading: "Caricamento della guida...",
-        close: "Aiuto vicino",
+        close: "Chiudi aiuto",
     },
     services: {
         default: {
@@ -33,15 +33,15 @@ export const it = {
         local: {
             title: "Scegli un file",
             button: "Seleziona un file",
-            or: "di",
+            or: "o",
             drop: "Trascina qui un file per caricarlo",
         },
         camera: {
-            title: "telecamera",
-            button: "Foto della webcam",
-            switch: "Cambia fotocamera",
-            waiting: "In attesa di autorizzazione della fotocamera ...",
-            unableToRead: "Non possiamo leggere il video dalla tua fotocamera. Ciò può essere dovuto al fatto che non hai concesso l'autorizzazione richiesta o perché il tuo dispositivo non supporta l'accesso alla videocamera.",
+            title: "Telecamera",
+            button: "Foto della telecamera",
+            switch: "Cambia telecamera",
+            waiting: "In attesa di autorizzazione della telecamera...",
+            unableToRead: "Non é possibile leggere il video della telecamera. Ciò può essere dovuto al fatto che non hai concesso l'autorizzazione richiesta o perché il tuo dispositivo non supporta l'accesso alla telecamera.",
         },
         microlink: {
             button: "Importa da $1$",
@@ -62,11 +62,11 @@ export const it = {
         },
         flickr: {
             title: "Flickr",
-            type: "una foto",
+            type: "foto",
         },
         ninegag: {
             title: "9GAG",
-            type: "una foto",
+            type: "foto",
         },
         deviantart: {
             title: "DeviantArt",
@@ -80,15 +80,15 @@ export const it = {
         },
         pinterest: {
             title: "Pinterest",
-            type: "perno",
+            type: "pin",
         },
         flipboard: {
             title: "Flipboard",
             type: "articolo",
         },
         fotki: {
-            title: "foto",
-            type: "una foto",
+            title: "Fotki",
+            type: "foto",
         },
         linkedin: {
             title: "LinkedIn",
@@ -103,17 +103,17 @@ export const it = {
             title: "We Heart It",
         },
         screenshot: {
-            title: "Immagine dello schermo",
+            title: "Screenshot",
             button: "Fai uno screenshot",
             label: "URL della pagina web",
             placeholder: "Inserisci un URL",
-            loading: "Fai uno screenshot ...",
+            loading: "Fai uno screenshot...",
         },
         search: {
             button: "Cerca $1$",
             label: "Cerca un'immagine",
             placeholder: "Cerca qualcosa",
-            imagesPoweredBy: "Immagini rese possibili da $1$",
+            imagesPoweredBy: "Reso possibile da $1$",
         },
         giphy: {
             title: "GIPHY",
@@ -130,36 +130,36 @@ export const it = {
     },
     effects: {
         preview: {
-            title: "esempio",
+            title: "Anteprima",
         },
         filters: {
-            title: "filtri",
+            title: "Filtri",
         },
         crop: {
-            title: "raccolto",
+            title: "Taglio",
             aspectRatios: {
-                free: "Gratuito",
-                square: "pieno",
+                free: "libero",
+                square: "quadrato",
             },
         },
         rotate: {
-            title: "torcere",
+            title: "Ruotare",
         },
         flip: {
-            title: "Voltati",
+            title: "Capovolgere",
             buttons: {
                 horizontal: "orizzontale",
                 vertical: "verticale",
             },
         },
         sharpen: {
-            title: "affinare",
+            title: "Affinare",
         },
         blur: {
-            title: "dissolvenza",
+            title: "Sfocare",
         },
         brightness: {
-            title: "luminosità",
+            title: "Luminosità",
         },
         contrast: {
             title: "Contrasto",
@@ -171,13 +171,13 @@ export const it = {
             title: "Ruota tonalità",
         },
         invert: {
-            title: "Girare",
+            title: "Invertire",
         },
         saturate: {
-            title: "satiate",
+            title: "Saturare",
         },
         sepia: {
-            title: "nero di seppia",
+            title: "Seppia",
         },
     },
 };
