@@ -97,6 +97,7 @@ export class Uppload {
         if (settings.uploader)
             this.uploader = settings.uploader;
         this.inline = !!settings.inline;
+        this.renderContainer();
         this.update();
     }
     ready() {
