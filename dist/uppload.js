@@ -796,7 +796,7 @@ export class Uppload {
         this.uploadProgress = progressPercent;
         const progressText = this.container.querySelector(".uppload-loader-text .progress");
         if (progressText)
-            progressText.innerHTML = `${parseInt(progressPercent.toString())}%`;
+            progressText.innerHTML = `${parseInt(progressPercent.toString())} %`;
         this.emitter.emit("progress", this.updateProgress);
     }
 }
