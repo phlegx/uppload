@@ -383,6 +383,7 @@ export class Uppload {
           <div class="uppload-active-container"></div>
           <footer style="display: none" class="effects-nav">${this.getEffectsNavbar()}</footer>
         </section>
+        ${!this.settings.disableHelp ? `
         <div class="uppload-help-loading">
           <div class="uppload-loader">
             <div></div>
@@ -392,7 +393,7 @@ export class Uppload {
         <div class="uppload-help">
           <div><button><span>${translate("help.close")}</span><span aria-hidden="true">&times;</span></button></div>
           <iframe></iframe>
-        </div>
+        </div>` : ""}
       </div>
       <div class="uppload-modal-bg">
         <button class="uppload-close" aria-label="${translate("close")}">&times;</button>
