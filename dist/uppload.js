@@ -570,7 +570,7 @@ export class Uppload {
         }
     }
     compress(file) {
-        if (this.settings.compressionFromMimes &&
+        if (!this.settings.compressionFromMimes ||
             this.settings.compressionFromMimes.indexOf(file.type) === -1)
             return new Promise((resolve) => resolve(file));
         if (typeof this.settings.compressor === "function")
