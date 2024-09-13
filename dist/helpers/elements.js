@@ -62,39 +62,58 @@ const safeRequestAnimationFrame = (callback) => {
  * @param image - An HTML <img> element in the DOM
  */
 export const fitImageToContainer = (params, image) => {
-    return new Promise((resolve) => {
-        safeRequestAnimationFrame(() => {
-            const parent = image.parentElement;
-            const currentDimensions = image.getBoundingClientRect();
-            if (!parent)
-                return;
-            const dimensions = parent.getBoundingClientRect();
-            if (currentDimensions.height < currentDimensions.width) {
-                image.style.height = `${dimensions.height}px`;
-                image.style.width = "auto";
-            }
-            else {
-                image.style.width = `${dimensions.width}px`;
-                image.style.height = "auto";
-            }
+    return new Promise((resolve, reject) => {
+        const onCleanup = () => {
+            image.removeEventListener('load', onLoad);
+            image.removeEventListener('error', onError);
+        };
+  
+        const onError = (error) => {
+            onCleanup();
+            reject(error);
+        };
+  
+        const onLoad = () => {
             safeRequestAnimationFrame(() => {
+                const parent = image.parentElement;
                 const currentDimensions = image.getBoundingClientRect();
-                if (currentDimensions.height > dimensions.height) {
+                if (!parent) {
+                    onCleanup();
+                    return;
+                }
+                const dimensions = parent.getBoundingClientRect();
+                if (currentDimensions.height < currentDimensions.width) {
                     image.style.height = `${dimensions.height}px`;
                     image.style.width = "auto";
                 }
-                else if (currentDimensions.width > dimensions.width) {
+                else {
                     image.style.width = `${dimensions.width}px`;
                     image.style.height = "auto";
                 }
                 safeRequestAnimationFrame(() => {
-                    const effect = params.uppload.container.querySelector(".uppload-effect");
-                    if (effect)
-                        effect.style.opacity = "1";
-                    resolve();
+                    const currentDimensions = image.getBoundingClientRect();
+                    if (currentDimensions.height > dimensions.height) {
+                        image.style.height = `${dimensions.height}px`;
+                        image.style.width = "auto";
+                    }
+                    else if (currentDimensions.width > dimensions.width) {
+                        image.style.width = `${dimensions.width}px`;
+                        image.style.height = "auto";
+                    }
+                    safeRequestAnimationFrame(() => {
+                        const effect = params.uppload.container.querySelector(".uppload-effect");
+                        if (effect)
+                            effect.style.opacity = "1";
+                        onCleanup();
+                        resolve();
+                    });
                 });
             });
-        });
+        };
+  
+        onCleanup();
+        image.addEventListener('load', onLoad);
+        image.addEventListener('error', onError);
     });
 };
 /**
