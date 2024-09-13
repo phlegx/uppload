@@ -64,37 +64,60 @@ export const fitImageToContainer = (
   params: IHandlersParams,
   image: HTMLImageElement | HTMLVideoElement
 ): Promise<undefined> => {
-  return new Promise((resolve) => {
-    safeRequestAnimationFrame(() => {
-      const parent = image.parentElement as HTMLDivElement | null;
-      const currentDimensions = image.getBoundingClientRect();
-      if (!parent) return;
-      const dimensions = parent.getBoundingClientRect();
-      if (currentDimensions.height < currentDimensions.width) {
-        image.style.height = `${dimensions.height}px`;
-        image.style.width = "auto";
-      } else {
-        image.style.width = `${dimensions.width}px`;
-        image.style.height = "auto";
-      }
+  return new Promise((resolve, reject) => {
+    const onCleanup = () => {
+      image.removeEventListener('load', onLoad);
+      image.removeEventListener('error', onError);
+    };
+
+    const onError = (error: Event) => {
+      onCleanup();
+      reject(error);
+    };
+
+    const onLoad = () => {
       safeRequestAnimationFrame(() => {
+        const parent = image.parentElement as HTMLDivElement | null;
         const currentDimensions = image.getBoundingClientRect();
-        if (currentDimensions.height > dimensions.height) {
+        if (!parent) {
+          onCleanup();
+          return;
+        }
+        const dimensions = parent.getBoundingClientRect();
+        if (currentDimensions.height < currentDimensions.width) {
           image.style.height = `${dimensions.height}px`;
           image.style.width = "auto";
-        } else if (currentDimensions.width > dimensions.width) {
+        }
+        else {
           image.style.width = `${dimensions.width}px`;
           image.style.height = "auto";
         }
         safeRequestAnimationFrame(() => {
-          const effect = params.uppload.container.querySelector(
-            ".uppload-effect"
-          ) as HTMLDivElement | null;
-          if (effect) effect.style.opacity = "1";
-          resolve();
+          const currentDimensions = image.getBoundingClientRect();
+          if (currentDimensions.height > dimensions.height) {
+            image.style.height = `${dimensions.height}px`;
+            image.style.width = "auto";
+          }
+          else if (currentDimensions.width > dimensions.width) {
+            image.style.width = `${dimensions.width}px`;
+            image.style.height = "auto";
+          }
+          safeRequestAnimationFrame(() => {
+            const effect = params.uppload.container.querySelector(
+              ".uppload-effect"
+            ) as HTMLDivElement | null;
+            if (effect)
+                effect.style.opacity = "1";
+            onCleanup();
+            resolve(undefined);
+          });
         });
       });
-    });
+    };
+
+    onCleanup();
+    image.addEventListener('error', onError);
+    image.addEventListener('load', onLoad);
   });
 };
 
