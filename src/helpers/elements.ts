@@ -116,8 +116,9 @@ export const fitImageToContainer = (
     };
 
     onCleanup();
-    image.addEventListener('error', onError);
     image.addEventListener('load', onLoad);
+    image.addEventListener('error', onError);
+    image.src = image.src; /* Reload image. */
   });
 };
 
