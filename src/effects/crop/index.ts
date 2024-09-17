@@ -54,7 +54,7 @@ export default class Crop extends UpploadEffect {
     this.originalFile = file;
     return `
       <div class="uppload-cropping-element">
-        <img class="cropper-hidden" style="width: 20px" alt="" src="${image}">
+        <img style="width: 20px; visibility: hidden;" alt="" src="${image}">
       </div>
       ${
         !this.aspectRatio && !this.hideAspectRatioSettings
