@@ -10,6 +10,8 @@ export * from "./helpers/elements";
 export * from "./helpers/interfaces";
 export * from "./helpers/http";
 export * from "./helpers/i18n";
+export * from "./helpers/microlink";
+export * from "./helpers/search";
 
 // Language packs
 export * from "./i18n";

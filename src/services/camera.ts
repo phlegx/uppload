@@ -18,11 +18,8 @@ export default class Camera extends UpploadService {
   frontCamera = false;
 
   supports = () =>
-    !!(
-      window.navigator.mediaDevices &&
-      window.navigator.mediaDevices.enumerateDevices &&
-      !/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
-    );
+    window.navigator.mediaDevices &&
+    !/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   template = ({ translate }: IServiceTemplateParams) => {
     return `
@@ -32,7 +29,7 @@ export default class Camera extends UpploadService {
         )}</div>
         <div class="camera-error">
           <p>${translate("services.camera.unableToRead")}</p>
-          <p><a href="https://uppload.js.org/help/camera" target="_blank">${translate(
+          <p><a href="https://uppload.js.org/help/services/camera" target="_blank">${translate(
             "needHelp"
           )}</a></p>
         </div>
@@ -56,7 +53,7 @@ export default class Camera extends UpploadService {
   };
 
   stop = () => {
-    if (this.stream) this.stream.getTracks().forEach((track) => track.stop());
+    if (this.stream) this.stream.getTracks().forEach(track => track.stop());
   };
 
   update(params: IHandlersParams) {
@@ -122,14 +119,12 @@ export default class Camera extends UpploadService {
     const clickButton = params.uppload.container.querySelector(".camera-click");
     if (clickButton)
       safeListen(clickButton, "click", this.clickPhoto.bind(this, params));
-    const switchButton = params.uppload.container.querySelector(
-      ".camera-click"
-    );
+    const switchButton =
+      params.uppload.container.querySelector(".camera-click");
     if (switchButton)
       safeListen(switchButton, "click", this.switchCamera.bind(this, params));
-    const helpButton = params.uppload.container.querySelector(
-      ".need-help-link"
-    );
+    const helpButton =
+      params.uppload.container.querySelector(".need-help-link");
     if (helpButton)
       safeListen(helpButton, "click", () =>
         params.showHelp("/services/camera")
@@ -159,7 +154,7 @@ export default class Camera extends UpploadService {
     const videoSize = video.getBoundingClientRect();
     let width = videoSize.width;
     let height = videoSize.height;
-    this.stream.getTracks().forEach((track) => {
+    this.stream.getTracks().forEach(track => {
       const settings = track.getSettings();
       if (settings.width) width = settings.width;
       if (settings.height) height = settings.height;
@@ -170,7 +165,7 @@ export default class Camera extends UpploadService {
     if (!context) return;
     context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     context.drawImage(video, 0, 0, width, height);
-    canvasToBlob(this.canvas).then((blob) =>
+    canvasToBlob(this.canvas).then(blob =>
       params.next(
         blobToUpploadFile(
           blob,
@@ -186,7 +181,7 @@ export default class Camera extends UpploadService {
     this.stop();
     window.navigator.mediaDevices
       .getUserMedia(constraints)
-      .then((mediaStream) => {
+      .then(mediaStream => {
         this.stream = mediaStream;
         const video = params.uppload.container.querySelector(
           "video.camera-stream"

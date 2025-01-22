@@ -5,14 +5,14 @@ const uppload = new Uppload({ lang: en });
 test("adds an Uppload service", () => {
   uppload.use(new Instagram());
   expect(
-    uppload.services.filter((services) => services.name === "instagram").length
+    uppload.services.filter(services => services.name === "instagram").length
   ).toBe(1);
 });
 
 test("adds an Uppload effect", () => {
   uppload.use(new Crop());
   expect(
-    uppload.effects.filter((effects) => effects.name === "crop").length
+    uppload.effects.filter(effects => effects.name === "crop").length
   ).toBe(1);
 });
 
@@ -36,10 +36,6 @@ describe("modal functions", () => {
     uppload.open();
     expect(uppload.modalOpen()).toBeTruthy();
   });
-  it("closes", () => {
-    uppload.close();
-    expect(uppload.modalOpen()).toBeFalsy();
-  });
   it("has a default active service", () => {
     expect(uppload.activeService).toBe("instagram");
   });
@@ -56,5 +52,9 @@ describe("modal functions", () => {
   it("navigates to effect", () => {
     uppload.navigate("instagram");
     expect(uppload.activeService).toBe("instagram");
+  });
+  it("closes", () => {
+    uppload.close();
+    expect(uppload.modalOpen()).toBeFalsy();
   });
 });

@@ -1,6 +1,7 @@
 export { de } from "./de";
 export { en } from "./en";
 export { es } from "./es";
+export { fa } from "./fa";
 export { fr } from "./fr";
 export { hi } from "./hi";
 export { it } from "./it";
@@ -9,4 +10,5 @@ export { pt } from "./pt";
 export { ro } from "./ro";
 export { ru } from "./ru";
 export { tr } from "./tr";
+export { uk } from "./uk";
 export { zhTW } from "./zh-TW";
