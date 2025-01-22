@@ -67,8 +67,8 @@ export const fitImageToContainer = (
 ): Promise<undefined> => {
   return new Promise((resolve, reject) => {
     const onCleanup = () => {
-      image.removeEventListener('load', onLoad);
-      image.removeEventListener('error', onError);
+      image.removeEventListener("load", onLoad);
+      image.removeEventListener("error", onError);
     };
 
     const onError = (error: Event) => {
@@ -88,8 +88,7 @@ export const fitImageToContainer = (
         if (currentDimensions.height < currentDimensions.width) {
           image.style.height = `${dimensions.height}px`;
           image.style.width = "auto";
-        }
-        else {
+        } else {
           image.style.width = `${dimensions.width}px`;
           image.style.height = "auto";
         }
@@ -98,8 +97,7 @@ export const fitImageToContainer = (
           if (currentDimensions.height > dimensions.height) {
             image.style.height = `${dimensions.height}px`;
             image.style.width = "auto";
-          }
-          else if (currentDimensions.width > dimensions.width) {
+          } else if (currentDimensions.width > dimensions.width) {
             image.style.width = `${dimensions.width}px`;
             image.style.height = "auto";
           }
@@ -107,8 +105,7 @@ export const fitImageToContainer = (
             const effect = params.uppload.container.querySelector(
               ".uppload-effect"
             ) as HTMLDivElement | null;
-            if (effect)
-                effect.style.opacity = "1";
+            if (effect) effect.style.opacity = "1";
             onCleanup();
             resolve(undefined);
           });
@@ -117,8 +114,8 @@ export const fitImageToContainer = (
     };
 
     onCleanup();
-    image.addEventListener('load', onLoad);
-    image.addEventListener('error', onError);
+    image.addEventListener("load", onLoad);
+    image.addEventListener("error", onError);
     image.src = image.src; /* Reload image. */
   });
 };
