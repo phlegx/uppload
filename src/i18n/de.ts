@@ -1,12 +1,12 @@
 export const de = {
-  upload: "Hochladen",
-  cancel: "Abbrechen",
-  close: "Schließen",
-  uploading: "Hochladen ...",
+  upload: "hochladen",
+  cancel: "abbrechen",
+  close: "schließen",
+  uploading: "Hochladen...",
   uploaded: "Hochgeladen",
-  fetching: "Bild abrufen von $1$ ...",
+  fetching: "Bild abrufen von $1$...",
   poweredBy: "Ermöglicht durch $1$",
-  needHelp: "Benötigen Sie Hilfe?",
+  needHelp: "Hilfe benötigt?",
   units: {
     px: "px",
     "%": "%",
@@ -28,32 +28,32 @@ export const de = {
   },
   services: {
     default: {
-      heading: "Wählen Sie ein Bild aus",
+      heading: "Wähle ein Bild aus",
     },
     local: {
-      title: "Wählen Sie eine Datei",
-      button: "Wählen Sie eine Datei aus",
+      title: "Wähle eine Datei",
+      button: "Wähle eine Datei aus",
       or: "oder",
-      drop: "Ziehen Sie eine Datei hierher, um sie hochzuladen",
+      drop: "Ziehe eine Datei hierher, um sie hochzuladen",
     },
     camera: {
       title: "Kamera",
       button: "Webcam Foto",
       switch: "Kamera wechseln",
-      waiting: "Warten auf Kameraerlaubnis ...",
+      waiting: "Warten auf Kameraerlaubnis...",
       unableToRead:
-        "Wir können das Video nicht von Ihrer Kamera lesen. Dies kann daran liegen, dass Sie nicht die erforderliche Berechtigung erteilt haben oder dass Ihr Gerät den Kamerazugriff nicht unterstützt.",
+        "Wir können das Video nicht von der Kamera lesen. Dies kann daran liegen, dass nicht die erforderliche Berechtigung erteilt wurde oder dass das Gerät den Kamerazugriff nicht unterstützt.",
     },
     microlink: {
-      button: "Import von $1$",
+      button: "Importieren von $1$",
       label: "$1$ $2$ URL",
-      placeholder: "Geben Sie eine URL von 1 bis 2 US-Dollar ein",
+      placeholder: "Gib eine URL von $1$ $2$ ein",
       type: "Post",
     },
     url: {
       title: "Direkte URL",
       label: "Bild-URL",
-      placeholder: "Geben Sie eine Bild-URL ein",
+      placeholder: "Gib eine Bild-URL ein",
     },
     instagram: {
       title: "Instagram",
@@ -63,11 +63,11 @@ export const de = {
     },
     flickr: {
       title: "Flickr",
-      type: "ein foto",
+      type: "Foto",
     },
     ninegag: {
       title: "9GAG",
-      type: "ein foto",
+      type: "Foto",
     },
     deviantart: {
       title: "DeviantArt",
@@ -81,15 +81,15 @@ export const de = {
     },
     pinterest: {
       title: "Pinterest",
-      type: "Stift",
+      type: "Pin",
     },
     flipboard: {
       title: "Flipboard",
-      type: "artikel",
+      type: "Artikel",
     },
     fotki: {
-      title: "Fotos",
-      type: "ein foto",
+      title: "Fotki",
+      type: "Foto",
     },
     linkedin: {
       title: "LinkedIn",
@@ -101,26 +101,26 @@ export const de = {
       title: "Tumblr",
     },
     weheartit: {
-      title: "Wir lieben es",
+      title: "We Heart It",
     },
     screenshot: {
       title: "Bildschirmfoto",
-      button: "Screenshot machen",
+      button: "Bildschirmfoto erstellen",
       label: "URL der Webseite",
-      placeholder: "Geben Sie eine URL ein",
-      loading: "Machen Sie einen Screenshot ...",
+      placeholder: "Gib eine URL ein",
+      loading: "Mache ein Bildschirmfoto...",
     },
     search: {
-      button: "Suchen Sie nach $1$",
-      label: "Suchen Sie nach einem Bild",
+      button: "Suche nach $1$",
+      label: "Suche nach einem Bild",
       placeholder: "Suche nach etwas",
-      imagesPoweredBy: "Bilder möglich gemacht von $1$",
+      imagesPoweredBy: "Ermöglicht durch $1$",
     },
     giphy: {
       title: "GIPHY",
     },
     unsplash: {
-      title: "Aufspritzen",
+      title: "Unsplash",
     },
     pixabay: {
       title: "Pixabay",
@@ -131,7 +131,7 @@ export const de = {
   },
   effects: {
     preview: {
-      title: "Beispiel",
+      title: "Vorschau",
     },
     filters: {
       title: "Filter",
@@ -140,7 +140,7 @@ export const de = {
       title: "Zuschneiden",
       aspectRatios: {
         free: "Frei",
-        square: "Quadratisch",
+        square: "voll",
       },
     },
     rotate: {

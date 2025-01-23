@@ -21,7 +21,7 @@ export default class Camera extends UpploadService {
     window.navigator.mediaDevices &&
     !/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  template = ({ translate }: IServiceTemplateParams) => {
+  template = ({ translate, uppload }: IServiceTemplateParams) => {
     return `
       <div class="service-main">
         <div class="camera-waiting">${translate(
@@ -29,9 +29,13 @@ export default class Camera extends UpploadService {
         )}</div>
         <div class="camera-error">
           <p>${translate("services.camera.unableToRead")}</p>
-          <p><a href="https://uppload.js.org/help/services/camera" target="_blank">${translate(
-            "needHelp"
-          )}</a></p>
+          ${
+            !uppload.settings.disableHelp
+              ? `<p><a href="https://uppload.js.org/help/services/camera" target="_blank">${translate(
+                  "needHelp"
+                )}</a></p>`
+              : ""
+          }
         </div>
         <div class="camera-success">
           <video class="camera-stream"></video>
@@ -45,11 +49,13 @@ export default class Camera extends UpploadService {
           class="camera-click uppload-button uppload-button--cta"
           style="background: ${this.color}"
         >${translate("services.camera.button")}</button>
-      </footer>
-      <button class="need-help-link"><span>${translate(
-        "needHelp"
-      )}</span aria-hidden="true"><span>?</span></button>
-    `;
+      </footer>${
+        !uppload.settings.disableHelp
+          ? `<button class="need-help-link"><span>${translate(
+              "needHelp"
+            )}</span aria-hidden="true"><span>?</span></button>`
+          : ""
+      }`;
   };
 
   stop = () => {

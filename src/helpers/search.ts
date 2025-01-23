@@ -79,6 +79,7 @@ export class SearchBaseClass<ImageResult = any> extends UpploadService {
         .then(photos => {
           this.results = this.getPopularResults(photos);
         })
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
         .catch(() => {});
   }
 
@@ -105,7 +106,7 @@ export class SearchBaseClass<ImageResult = any> extends UpploadService {
     if (loader) loader.style.display = this.loading ? "flex" : "none";
   }
 
-  template = ({ translate }: IServiceTemplateParams): string => {
+  template = ({ translate, uppload }: IServiceTemplateParams): string => {
     return `
       <div class="search-container"><form class="search-search-form">
       <div class="service-icon">${colorSVG(this.icon, this)}</div>
@@ -127,11 +128,13 @@ export class SearchBaseClass<ImageResult = any> extends UpploadService {
         `<a href="${this.poweredByUrl}" target="_blank">${translate(
           `services.${this.name}.title`
         )}</a>`
-      )}</p></div>
-      <button class="need-help-link"><span>${translate(
-        "needHelp"
-      )}</span aria-hidden="true"><span>?</span></button>
-      <div class="uppload-loader search-loader">
+      )}</p></div>${
+      !uppload.settings.disableHelp
+        ? `<button class="need-help-link"><span>${translate(
+            "needHelp"
+          )}</span aria-hidden="true"><span>?</span></button>`
+        : ""
+    }<div class="uppload-loader search-loader">
         <div></div>
         <p>${translate(
           "fetching",

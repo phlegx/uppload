@@ -34,6 +34,7 @@ import {
   Invert,
   Saturate,
   Sepia,
+  Preview,
 } from "../src";
 
 const button = document.createElement("div");
@@ -47,6 +48,17 @@ const uppload = new Uppload({
   call: ".try-uppload",
   lang: en,
   maxSize: [256, 256],
+  defaultService: "local",
+  defaultModalOpen: false,
+  disableHelp: false,
+  disableAfterUploadNavigate: false,
+  disableAfterUploadClose: false,
+  disableCancelButton: false,
+  disableUploadButton: false,
+  disableEffectsNavbar: false,
+  customid: "custom-id",
+  wrapper: "#uppload-wrapper",
+  // inline: true,
   uploader: (file, updateProgress) =>
     new Promise(resolve => {
       console.log("Uploading file...", file);
@@ -102,6 +114,7 @@ uppload.use([
 ]);
 
 uppload.use([
+  new Preview(),
   new Crop({
     aspectRatio: 1,
   }),
@@ -117,13 +130,23 @@ uppload.use([
   new Sepia(),
 ]);
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 uppload.on("*", (...args: any) => {
   console.log("Uppload event", ...args);
 });
 
+/* Try out doUpload() function. */
+/* uppload.on("next-effect", (obj: { file: File; effect: string }) => {
+  if (obj.effect === "preview") {
+    uppload.doUpload();
+  }
+}); */
+
 setTimeout(function () {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore-next-line
   document.querySelector(".try-uppload").click();
 }, 250);
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 (window as any).uppload = uppload;

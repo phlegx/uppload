@@ -44,8 +44,10 @@ For example, in the string "Import from $1$", we replace $1$ with "Instagram" to
 You can use Gitpod (a free online VS Code-like IDE) for contributing online. With a single click, it will launch a workspace using which you make a Pull Request from within the browser. Gitpod will automatically:
 
 - Clone the repository
-- Install all required dependencies
-- Run the local development script: `npm run demo`
+- Install all required dependencies: `npm install`
+- Run the local development script: `npm run dev`
+- Uninstall husky: `npm run uninstall-husky`
+- Build: `npm run build`
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
 

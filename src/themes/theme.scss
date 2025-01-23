@@ -146,4 +146,12 @@
       background-color: $modalElementBackground;
     }
   }
+
+  .uppload-file-name {
+    color: $dropAreaColor;
+  }
+  
+  .uppload-file-size {
+    color: rgba($colorBlack, 0.5);
+  }
 }

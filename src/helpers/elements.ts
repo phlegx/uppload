@@ -116,6 +116,7 @@ export const fitImageToContainer = (
     onCleanup();
     image.addEventListener("load", onLoad);
     image.addEventListener("error", onError);
+    // eslint-disable-next-line no-self-assign
     image.src = image.src; /* Reload image. */
   });
 };
@@ -210,7 +211,9 @@ export const canvasToBlob = (
             hasTransparency = true;
           }
         }
-      } catch (error) {}
+      } catch (error) {
+        /* empty */
+      }
     }
     /**
      * If a transparent image is uploaded, like a PNG or GIF,

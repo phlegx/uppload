@@ -33,6 +33,16 @@ export interface IUpploadSettings {
   compressor?: (file: Blob) => Promise<Blob>;
   transitionDuration?: number;
   disableModalClickClose?: boolean;
+  disableHelp?: boolean;
+  disableAfterUploadNavigate?: boolean;
+  disableAfterUploadClose?: boolean;
+  disableEffectsNavbar?: boolean;
+  disableCancelButton?: boolean;
+  disableUploadButton?: boolean;
+  defaultModalOpen?: boolean;
+  defaultServiceCancelButton?: string;
+  customid?: string;
+  wrapper?: string; 
 }
 
 export interface IHandlersParams {
