@@ -1,0 +1,2 @@
+import{de as e}from"./de.js";import{en as f}from"./en.js";import{es as m}from"./es.js";import{fa as h}from"./fa.js";import{fr as n}from"./fr.js";import{hi as a}from"./hi.js";import{it as k}from"./it.js";import{nl as s}from"./nl.js";import{pt as T}from"./pt.js";import{ro as b}from"./ro.js";import{ru as g}from"./ru.js";import{tr as q}from"./tr.js";import{uk as w}from"./uk.js";import{zhTW as A}from"./zh-TW.js";export{e as de,f as en,m as es,h as fa,n as fr,a as hi,k as it,s as nl,T as pt,b as ro,g as ru,q as tr,w as uk,A as zhTW};
+//# sourceMappingURL=index.js.map

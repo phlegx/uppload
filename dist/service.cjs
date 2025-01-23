@@ -1,0 +1,2 @@
+"use strict";var s=Object.defineProperty;var t=(l,o,r)=>o in l?s(l,o,{enumerable:!0,configurable:!0,writable:!0,value:r}):l[o]=r;var e=(l,o,r)=>(t(l,typeof o!="symbol"?o+"":o,r),r);Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});class a{constructor(){e(this,"type","service");e(this,"name","");e(this,"invisible",!1);e(this,"noRecolor",!1);e(this,"icon","");e(this,"color","#333");e(this,"template",()=>"");e(this,"handlers",()=>{});e(this,"stop",()=>{});e(this,"supports",()=>!0)}}exports.UpploadService=a;
+//# sourceMappingURL=service.cjs.map

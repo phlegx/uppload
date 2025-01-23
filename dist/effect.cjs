@@ -1,0 +1,2 @@
+"use strict";var a=Object.defineProperty;var s=(l,t,o)=>t in l?a(l,t,{enumerable:!0,configurable:!0,writable:!0,value:o}):l[t]=o;var e=(l,t,o)=>(s(l,typeof t!="symbol"?t+"":t,o),o);Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});class c{constructor(){e(this,"type","effect");e(this,"name","");e(this,"invisible",!1);e(this,"noRecolor",!1);e(this,"color","#000");e(this,"icon","");e(this,"template",()=>"");e(this,"handlers",()=>{});e(this,"supports",()=>!0)}}exports.UpploadEffect=c;
+//# sourceMappingURL=effect.cjs.map

@@ -1,0 +1,2 @@
+var t=Object.defineProperty;var a=(o,l,s)=>l in o?t(o,l,{enumerable:!0,configurable:!0,writable:!0,value:s}):o[l]=s;var e=(o,l,s)=>(a(o,typeof l!="symbol"?l+"":l,s),s);class c{constructor(){e(this,"type","effect");e(this,"name","");e(this,"invisible",!1);e(this,"noRecolor",!1);e(this,"color","#000");e(this,"icon","");e(this,"template",()=>"");e(this,"handlers",()=>{});e(this,"supports",()=>!0)}}export{c as UpploadEffect};
+//# sourceMappingURL=effect.js.map

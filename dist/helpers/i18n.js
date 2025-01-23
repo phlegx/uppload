@@ -1,0 +1,2 @@
+let c={};const f=e=>{const n={};for(const t in e)if(e.hasOwnProperty(t))if(typeof e[t]=="object"){const r=f(e[t]);for(const o in r)r.hasOwnProperty(o)&&(n[t+"."+o]=r[o])}else n[t]=e[t];return n},i=e=>{c=f(e)},l=(e,n)=>{try{let t=c[e];return typeof n=="string"&&(n=[n]),n&&n.forEach((r,o)=>{t=t.replace(`$${o+1}$`,r)}),c.helper&&typeof c.helper=="function"&&(t=c.helper(t)),t}catch{return""}};export{f as flattenObject,i as setI18N,l as translate};
+//# sourceMappingURL=i18n.js.map

@@ -1,0 +1,2 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const a=(e,t,o)=>{try{return new File([e],t||"file_name",{lastModified:(o||new Date).getTime(),type:e.type})}catch{return e}},r=(e,t,o,l)=>({name:t,blob:e,lastModified:l,type:o}),i=e=>{const t=e.blob;return e.lastModified=e.lastModified||new Date,a(t,e.name,e.lastModified)};exports.blobToUpploadFile=r;exports.safeUpploadFileToFile=i;
+//# sourceMappingURL=files.cjs.map

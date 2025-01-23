@@ -1,0 +1,2 @@
+var p=Object.defineProperty;var r=(s,o,l)=>o in s?p(s,o,{enumerable:!0,configurable:!0,writable:!0,value:l}):s[o]=l;var e=(s,o,l)=>(r(s,typeof o!="symbol"?o+"":o,l),l);class t{constructor(){e(this,"type","service");e(this,"name","");e(this,"invisible",!1);e(this,"noRecolor",!1);e(this,"icon","");e(this,"color","#333");e(this,"template",()=>"");e(this,"handlers",()=>{});e(this,"stop",()=>{});e(this,"supports",()=>!0)}}export{t as UpploadService};
+//# sourceMappingURL=service.js.map
