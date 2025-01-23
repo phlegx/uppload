@@ -15,9 +15,9 @@
     "upload",
     "javascript"
   ],
-  "main": "dist/index.umd.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/uppload.umd.js",
+  "module": "dist/uppload.mjs",
+  "types": "dist/uppload.d.ts",
   "files": [
     "dist",
     "src"
