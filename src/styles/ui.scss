@@ -2,6 +2,7 @@
   p {
     margin: 0;
     margin-bottom: 1rem;
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -19,6 +20,7 @@
   form {
     text-align: center;
     margin: 2rem 0;
+
     input {
       width: 75%;
       border: 0.1rem solid;
@@ -39,14 +41,17 @@
     margin: 1rem auto;
     transition: 0.2s;
   }
+
   form button,
   button.uppload-button,
   .effects-continue button {
     border: none;
   }
+
   .effects-continue button {
     margin: 0 1rem;
   }
+
   form button[type="submit"]::after,
   .uppload-button--cta::after,
   .effects-continue--upload::after {

@@ -11,6 +11,7 @@
     background-color: $modalElementBackground;
     color: $modalElementForeground;
   }
+
   .need-help-link,
   .uppload-help button {
     background-color: $sidebarNavBackground;
@@ -29,14 +30,17 @@
       &:checked + label {
         background-color: $sidebarNavActiveBackground;
         color: $sidebarNavActiveForeground;
+
         &:hover,
         &:focus {
           background-color: $sidebarNavActiveBackground;
         }
       }
+
       &:focus + label {
         box-shadow: $sidebarNavFocusBoxShadow;
       }
+
       + label:hover,
       + label:focus {
         background-color: darken($sidebarNavBackground, 5);
@@ -63,13 +67,16 @@
     button {
       background-color: $effectsButtonBackground;
       color: $effectsButtonForeground;
+
       &:hover,
       &:focus {
         background-color: lighten($effectsButtonBackground, 5);
       }
+
       &.effects-continue--upload {
         background-color: $effectsCTAButtonBackground;
         color: $effectsCTAButtonForeground;
+
         &:hover,
         &:focus {
           background-color: darken($effectsCTAButtonBackground, 10);
@@ -106,6 +113,7 @@
     .uppload-services button {
       background-color: $HomeNavItemBackground;
       color: $HomeNavItemForeground;
+
       &:hover,
       &:focus {
         background-color: $HomeNavItemHoverBackground;
@@ -119,6 +127,7 @@
       border: $dropAreaBorder;
       background-color: $dropAreaBackground;
       color: $dropAreaColor;
+
       &.drop-area-active {
         border: $dropAreaActiveBorder;
         background-color: $dropAreaActiveBackground;
@@ -134,6 +143,7 @@
   .uppload-effect--crop .uppload-actions input[type="radio"]:focus + label {
     box-shadow: $sidebarNavFocusBoxShadow;
   }
+
   .uppload-actions label,
   .settings button {
     background-color: $effectsLabelBackground;
@@ -142,6 +152,7 @@
 
   .processing-loader {
     background-color: rgba($modalElementBackground, 0.5);
+
     &::after {
       background-color: $modalElementBackground;
     }
