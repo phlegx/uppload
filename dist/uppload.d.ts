@@ -1,6 +1,6 @@
 import { UpploadService } from './service';
 import { UpploadEffect } from './effect';
-import { FocusTrap } from 'focus-trap';
+import { FocusTrap, Options } from 'focus-trap';
 import { ILanguage, IMultipleUploader, IPluginUpdateFunction, IUploader, IUppload, IUpploadFile, IUpploadSettings } from './helpers/interfaces';
 /**
  * Uppload image uploading widget
@@ -17,6 +17,7 @@ export declare class Uppload implements IUppload {
     focusTrap: FocusTrap;
     file: IUpploadFile;
     lang: ILanguage;
+    focusTrapOptions: Options;
     uploader?: IUploader | IMultipleUploader;
     emitter: import('mitt').Emitter<Record<import('mitt').EventType, unknown>>;
     uploadProgress: number;

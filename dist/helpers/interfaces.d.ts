@@ -1,3 +1,4 @@
+import { Options } from 'focus-trap';
 import { Uppload, UpploadEffect, UpploadService } from '../';
 export type IElements = string | string[] | Element | Element[];
 export type ITranslator = (key: string, params?: string | string[]) => string;
@@ -38,6 +39,7 @@ export interface IUpploadSettings {
     disableUploadButton?: boolean;
     defaultModalOpen?: boolean;
     defaultServiceCancelButton?: string;
+    focusTrapOptions?: Options;
     customid?: string;
     wrapper?: string;
 }
