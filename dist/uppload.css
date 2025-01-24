@@ -1189,5 +1189,5 @@
   display: none;
 }
 .uppload-container.visible {
-  display: block;
+  display: flex;
 }
