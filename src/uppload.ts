@@ -48,6 +48,7 @@ export class Uppload implements IUppload {
   focusTrap: FocusTrap;
   file: IUpploadFile = { blob: new Blob() };
   lang: ILanguage = {};
+  focusTrapOptions: Options = {};
   uploader?: IUploader | IMultipleUploader;
   emitter = mitt();
   uploadProgress = 0;
@@ -72,6 +73,7 @@ export class Uppload implements IUppload {
     if (wrapper) wrapper.appendChild(this.container);
     this.focusTrap = createFocusTrap(this.container, {
       initialFocus: () => this.container.querySelector("button"),
+      ...this.focusTrapOptions,
     } as Options);
     requestAnimationFrame(() => this.update());
 
@@ -103,6 +105,8 @@ export class Uppload implements IUppload {
     if (settings.lang) setI18N(settings.lang);
     if (settings.defaultService) this.activeService = settings.defaultService;
     if (settings.lang) this.lang = settings.lang;
+    if (settings.focusTrapOptions)
+      this.focusTrapOptions = settings.focusTrapOptions;
     if (typeof settings.transitionDuration !== "undefined")
       this.transitionDuration = settings.transitionDuration;
     if (settings.uploader) this.uploader = settings.uploader;
