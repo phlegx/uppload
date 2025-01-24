@@ -4,7 +4,7 @@
  * @returns Minified string
  */
 export const minifyHTML = (html: string) =>
-  html.replace(/\n/g, "").replace(/  /g, "");
+  html.replace(/\n/g, "").replace(/ {2}/g, "");
 
 /**
  * Returns a formatted version of the bytes
