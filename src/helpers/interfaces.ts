@@ -42,7 +42,7 @@ export interface IUpploadSettings {
   defaultModalOpen?: boolean;
   defaultServiceCancelButton?: string;
   customid?: string;
-  wrapper?: string; 
+  wrapper?: string;
 }
 
 export interface IHandlersParams {
