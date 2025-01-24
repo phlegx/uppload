@@ -6,7 +6,7 @@
           <span>${e(`services.${this.name}.label`)||e("services.microlink.label",[e(`services.${this.name}.title`)||this.name,e(`services.${this.name}.type`)||e("services.microlink.type")])}</span>
           <input class="microlink-search-input" type="url" placeholder="${e(`services.${this.name}.placeholder`)||e("services.microlink.placeholder",[e(`services.${this.name}.title`)||this.name,e(`services.${this.name}.type`)||e("services.microlink.type")])||""}" required>
         </label>
-        <button type="submit" style="background: ${this.color}">${e(`services.${this.name}.button`)||e("services.microlink.button",e(`services.${this.name}.title`)||this.name)}</button></form>${s.settings.disableHelp?"":`<button class="need-help-link"><span>${e("needHelp")}</span aria-hidden="true"><span>?</span></button>`}</div>
+        <button type="submit" style="background: ${this.color}">${e(`services.${this.name}.button`)||e("services.microlink.button",e(`services.${this.name}.title`)||this.name)}</button></form>${s.settings.disableHelp?"":`<button type="button" class="need-help-link"><span>${e("needHelp")}</span aria-hidden="true"><span>?</span></button>`}</div>
     <div class="uppload-loader microlink-loader">
     <div></div>
     <p>${e(`services.${this.name}.loading`)||e("services.microlink.loading",e(`services.${this.name}.title`)||this.name)||e("fetching",e(`services.${this.name}.title`))}</p>
