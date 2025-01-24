@@ -64,12 +64,15 @@ export class Uppload implements IUppload {
   constructor(settings?: IUpploadSettings) {
     this.settings = {};
     this.updateSettings(settings || {});
-    this.uId = this.settings.customid ?? (Math.random() + 1).toString(36).substring(7);
+    this.uId =
+      this.settings.customid ?? (Math.random() + 1).toString(36).substring(7);
     this.container = document.createElement("div");
     this.container.setAttribute("id", `uppload-${this.uId}`);
     this.renderContainer();
     this.container.classList.add("uppload-container");
-    const wrapper = this.wrapper ? document.querySelector(this.wrapper) ?? document.body : document.body;
+    const wrapper = this.wrapper
+      ? document.querySelector(this.wrapper) ?? document.body
+      : document.body;
     if (wrapper) wrapper.appendChild(this.container);
     this.focusTrap = createFocusTrap(this.container, {
       initialFocus: () => this.container.querySelector("button"),
@@ -289,7 +292,8 @@ export class Uppload implements IUppload {
     const footerEffectsNav: HTMLElement | null =
       this.container.querySelector(".effects-nav");
     if (aside && footerEffectsNav && this.activeEffect) {
-      if (!this.settings.disableEffectsNavbar) footerEffectsNav.style.display = "";
+      if (!this.settings.disableEffectsNavbar)
+        footerEffectsNav.style.display = "";
       aside.style.display = "none";
     } else if (aside && footerEffectsNav && this.activeService === "default") {
       aside.style.display = "none";
@@ -352,7 +356,11 @@ export class Uppload implements IUppload {
             }" class="uppload-service-name">
           ${
             sidebar
-              ? `<input type="radio" id="uppload-service-radio-${this.uId}-${service.name}" value="${service.name}" name="uppload-radio" ${service.name === this.activeService ? `checked="checked"` : ""}>`
+              ? `<input type="radio" id="uppload-service-radio-${this.uId}-${
+                  service.name
+                }" value="${service.name}" name="uppload-radio" ${
+                  service.name === this.activeService ? `checked="checked"` : ""
+                }>`
               : ""
           }
           <${
@@ -384,8 +392,14 @@ export class Uppload implements IUppload {
    */
   private getEffectsNavbar() {
     if (this.settings.disableEffectsNavbar) return "";
-    return `${!this.settings.disableCancelButton  ? `
-      <div class="effects-continue"><button class="effects-continue--cancel">${translate("cancel")}</button></div>`: ""}
+    return `${
+      !this.settings.disableCancelButton
+        ? `
+      <div class="effects-continue"><button class="effects-continue--cancel">${translate(
+        "cancel"
+      )}</button></div>`
+        : ""
+    }
       <div class="effects-tabs"><div class="effects-tabs-flow">
       ${this.effects
         .map(
@@ -411,8 +425,14 @@ export class Uppload implements IUppload {
         )
         .join("")}
       </div></div>
-      ${!this.settings.disableUploadButton  ? `
-        <div class="effects-continue"><button class="effects-continue--upload">${translate("upload")}</button></div>`: ""}
+      ${
+        !this.settings.disableUploadButton
+          ? `
+        <div class="effects-continue"><button class="effects-continue--upload">${translate(
+          "upload"
+        )}</button></div>`
+          : ""
+      }
       `;
   }
 
@@ -432,7 +452,9 @@ export class Uppload implements IUppload {
           <div class="uppload-active-container"></div>
           <footer style="display: none" class="effects-nav">${this.getEffectsNavbar()}</footer>
         </section>
-        ${!this.settings.disableHelp ? `
+        ${
+          !this.settings.disableHelp
+            ? `
         <div class="uppload-help-loading">
           <div class="uppload-loader">
             <div></div>
@@ -445,7 +467,9 @@ export class Uppload implements IUppload {
           )}</span><span aria-hidden="true">&times;</span></button></div>
           <iframe></iframe>
         </div>
-        ` : ""}
+        `
+            : ""
+        }
       </div>
       <div class="uppload-modal-bg">
         <button class="uppload-close" aria-label="${translate(
@@ -619,11 +643,15 @@ export class Uppload implements IUppload {
       if (
         this.effects.length &&
         file.type &&
-        (file.type.indexOf("image/") === 0 || this.effects[0].name === "preview")
+        (file.type.indexOf("image/") === 0 ||
+          this.effects[0].name === "preview")
       ) {
         this.activeEffect = this.effects[0].name;
         this.update();
-        this.emitter.emit("next-effect", { file: file, effect: this.activeEffect });
+        this.emitter.emit("next-effect", {
+          file: file,
+          effect: this.activeEffect,
+        });
       } else {
         return this.upload(safeUpploadFileToFile(file));
       }
@@ -684,7 +712,8 @@ export class Uppload implements IUppload {
           )
           .then((url: string) => {
             this.bind(url);
-            if (!this.settings.disableAfterUploadNavigate) this.navigate(this.settings.defaultService ?? "default");
+            if (!this.settings.disableAfterUploadNavigate)
+              this.navigate(this.settings.defaultService ?? "default");
             resolve(url);
             this.emitter.emit("upload", url);
             if (!this.settings.disableAfterUploadClose) this.close();
@@ -704,7 +733,8 @@ export class Uppload implements IUppload {
     this.error = translate(error.message) || error.message;
     this.emitter.emit("error", this.error);
     this.update();
-    if (this.activeService === "uploading") this.navigate(this.settings.defaultService ?? "default");
+    if (this.activeService === "uploading")
+      this.navigate(this.settings.defaultService ?? "default");
     setTimeout(() => {
       this.error = undefined;
       this.update();
