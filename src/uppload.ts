@@ -395,7 +395,7 @@ export class Uppload implements IUppload {
     return `${
       !this.settings.disableCancelButton
         ? `
-      <div class="effects-continue"><button class="effects-continue--cancel">${translate(
+      <div class="effects-continue"><button type="button" class="effects-continue--cancel">${translate(
         "cancel"
       )}</button></div>`
         : ""
@@ -428,7 +428,7 @@ export class Uppload implements IUppload {
       ${
         !this.settings.disableUploadButton
           ? `
-        <div class="effects-continue"><button class="effects-continue--upload">${translate(
+        <div class="effects-continue"><button type="button" class="effects-continue--upload">${translate(
           "upload"
         )}</button></div>`
           : ""
@@ -462,7 +462,7 @@ export class Uppload implements IUppload {
           </div>
         </div>
         <div class="uppload-help">
-          <div><button><span>${translate(
+          <div><button type="button"><span>${translate(
             "help.close"
           )}</span><span aria-hidden="true">&times;</span></button></div>
           <iframe></iframe>
@@ -472,7 +472,7 @@ export class Uppload implements IUppload {
         }
       </div>
       <div class="uppload-modal-bg">
-        <button class="uppload-close" aria-label="${translate(
+        <button type="button" class="uppload-close" aria-label="${translate(
           "close"
         )}">&times;</button>
       </div>
@@ -696,7 +696,9 @@ export class Uppload implements IUppload {
             file.type,
             new Date((file as File).lastModified)
           );
-      } catch (error) {}
+      } catch (error) {
+        /* empty */
+      }
       if (this.uploader && typeof this.uploader === "function") {
         this.compress(file)
           .then(file => {
@@ -778,7 +780,9 @@ export class Uppload implements IUppload {
             try {
               // Edge doesn't support scrollTo and throws an error
               if (aside) aside.scrollTo(left, top);
-            } catch (error) {}
+            } catch (error) {
+              /* empty */
+            }
           }
         }
         e.preventDefault();

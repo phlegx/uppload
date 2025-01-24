@@ -43,15 +43,17 @@ export default class Camera extends UpploadService {
       </div>
       <footer class="service-footer">
         <!--<button
+          type="button"
           class="camera-switch uppload-button"
         >${translate("services.camera.switch")}</button>-->
         <button
+          type="button"
           class="camera-click uppload-button uppload-button--cta"
           style="background: ${this.color}"
         >${translate("services.camera.button")}</button>
       </footer>${
         !uppload.settings.disableHelp
-          ? `<button class="need-help-link"><span>${translate(
+          ? `<button type="button" class="need-help-link"><span>${translate(
               "needHelp"
             )}</span aria-hidden="true"><span>?</span></button>`
           : ""

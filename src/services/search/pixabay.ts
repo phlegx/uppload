@@ -25,7 +25,7 @@ export default class Pixabay extends SearchBaseClass<PixabayResult> {
           query
         )}&image_type=photo`,
       getButton: (image: PixabayResult) => `<div class="result">
-        <button aria-label="${image.tags}" data-full-url="${image.largeImageURL}" style="background-image: url('${image.previewURL}')"></button><small class="author">
+        <button type="button" aria-label="${image.tags}" data-full-url="${image.largeImageURL}" style="background-image: url('${image.previewURL}')"></button><small class="author">
         <img alt="" src="${image.userImageURL}">
         <span>${image.user}</span>
       </small></div>`,

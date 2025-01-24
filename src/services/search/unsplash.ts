@@ -32,7 +32,7 @@ export default class Unsplash extends SearchBaseClass<UnsplashResult> {
           query
         )}`,
       getButton: (image: UnsplashResult) => `<div class="result">
-        <button aria-label="${
+        <button type="button" aria-label="${
           image.alt_description || image.description
         }" data-full-url="${
         image.urls.regular

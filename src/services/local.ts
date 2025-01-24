@@ -24,7 +24,7 @@ export default class Local extends UpploadService {
     return `<div class="drop-area">
       <div>${params.translate("services.local.drop")}</div>
       <em>${params.translate("services.local.or")}</em>
-      <button class="uppload-button uppload-button--cta" style="background: ${
+      <button type="button" class="uppload-button uppload-button--cta" style="background: ${
         this.color
       }">${params.translate("services.local.button")}</button>
     </div>
@@ -33,7 +33,7 @@ export default class Local extends UpploadService {
       params.uppload.settings.multiple ? " multiple" : ""
     }></div>${
       !params.uppload.settings.disableHelp
-        ? `<button class="need-help-link"><span>${translate(
+        ? `<button type="button" class="need-help-link"><span>${translate(
             "needHelp"
           )}</span aria-hidden="true"><span>?</span></button>`
         : ""

@@ -51,7 +51,7 @@ export class MicrolinkBaseClass extends UpploadService {
       )
     }</button></form>${
       !uppload.settings.disableHelp
-        ? `<button class="need-help-link"><span>${translate(
+        ? `<button type="button" class="need-help-link"><span>${translate(
             "needHelp"
           )}</span aria-hidden="true"><span>?</span></button>`
         : ""

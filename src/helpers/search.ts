@@ -130,7 +130,7 @@ export class SearchBaseClass<ImageResult = any> extends UpploadService {
         )}</a>`
       )}</p></div>${
       !uppload.settings.disableHelp
-        ? `<button class="need-help-link"><span>${translate(
+        ? `<button type="button" class="need-help-link"><span>${translate(
             "needHelp"
           )}</span aria-hidden="true"><span>?</span></button>`
         : ""
@@ -150,6 +150,7 @@ export class SearchBaseClass<ImageResult = any> extends UpploadService {
     ) as HTMLFormElement | null;
     if (form) {
       safeListen(form, "submit", event => {
+        event.preventDefault();
         const input = params.uppload.container.querySelector(
           `.search-search-input`
         ) as HTMLInputElement | null;
@@ -165,7 +166,6 @@ export class SearchBaseClass<ImageResult = any> extends UpploadService {
             })
             .catch(() => params.handle(new Error("errors.unable_to_search")));
         }
-        event.preventDefault();
         return false;
       });
     }

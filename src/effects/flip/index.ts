@@ -26,10 +26,10 @@ export default class Flip extends UpploadEffect {
         <img style="width: 20px" alt="" src="${image}">
       </div>
       <div class="settings">
-        <button class="flip-btn-horizontal">${translate(
+        <button type="button" class="flip-btn-horizontal">${translate(
           "effects.flip.buttons.horizontal"
         )}</button>
-        <button class="flip-btn-vertical">${translate(
+        <button type="button" class="flip-btn-vertical">${translate(
           "effects.flip.buttons.vertical"
         )}</button>
       </div>
@@ -75,7 +75,7 @@ export default class Flip extends UpploadEffect {
     if (!img) return;
     this.imageToCanvasBlob(params, x, y).then(blob => {
       if (!blob) return;
-      let file = this.originalFile;
+      const file = this.originalFile;
       file.blob = blob;
       params.next(file);
       const image = URL.createObjectURL(blob);
