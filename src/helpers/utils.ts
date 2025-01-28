@@ -16,7 +16,7 @@ export const minifyHTML = (html: string) =>
 export const formatBytes = (
   bytes: number,
   decimals: number = 2,
-  decimalSystem: boolean = false,
+  decimalSystem: boolean = false
 ) => {
   if (bytes === 0) {
     return "0 Bytes";
