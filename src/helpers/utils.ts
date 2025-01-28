@@ -10,13 +10,18 @@ export const minifyHTML = (html: string) =>
  * Returns a formatted version of the bytes
  * @param bytes - The bytes to format
  * @param decimals - The number of decimals to show
+ * @param decimalSystem - The boolean for decimal base system
  * @returns The formatted string
  */
-export const formatBytes = (bytes: number, decimals: number = 2) => {
+export const formatBytes = (
+  bytes: number,
+  decimals: number = 2,
+  decimalSystem: boolean = false,
+) => {
   if (bytes === 0) {
     return "0 Bytes";
   }
-  const base: number = 1024;
+  const base: number = decimalSystem ? 1000 : 1024;
   const dm: number = decimals < 0 ? 0 : decimals;
   const sizes: string[] = [
     "Bytes",

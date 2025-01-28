@@ -56,6 +56,8 @@ export class Uppload implements IUppload {
   transitionDuration = 300;
   uId = "";
   wrapper = "";
+  formatBytesDecimals = 2;
+  formatBytesDecimalSystem = false;
 
   /**
    * Create a new Uppload instance
@@ -110,6 +112,10 @@ export class Uppload implements IUppload {
     if (settings.lang) this.lang = settings.lang;
     if (settings.focusTrapOptions)
       this.focusTrapOptions = settings.focusTrapOptions;
+    if (typeof settings.formatBytesDecimals !== "undefined")
+      this.formatBytesDecimals = settings.formatBytesDecimals;
+    if (typeof settings.formatBytesDecimalSystem !== "undefined")
+      this.formatBytesDecimalSystem = settings.formatBytesDecimalSystem;
     if (typeof settings.transitionDuration !== "undefined")
       this.transitionDuration = settings.transitionDuration;
     if (settings.uploader) this.uploader = settings.uploader;
@@ -559,7 +565,7 @@ export class Uppload implements IUppload {
     return `
         <div class="active-effect-container">${
           typeof activeEffect.template === "function"
-            ? activeEffect.template({ file, translate })
+            ? activeEffect.template({ file, uppload: this, translate })
             : ""
         }</div>
       `;

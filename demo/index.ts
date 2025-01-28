@@ -56,6 +56,8 @@ const uppload = new Uppload({
   disableCancelButton: false,
   disableUploadButton: false,
   disableEffectsNavbar: false,
+  formatBytesDecimals: 3,
+  formatBytesDecimalSystem: true,
   customid: "custom-id",
   wrapper: "#uppload-wrapper",
   // inline: true,

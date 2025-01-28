@@ -45,6 +45,8 @@ export interface IUpploadSettings {
   focusTrapOptions?: Options;
   customid?: string;
   wrapper?: string;
+  formatBytesDecimals?: number;
+  formatBytesDecimalSystem?: boolean;
 }
 
 export interface IHandlersParams {
@@ -59,6 +61,7 @@ export interface IHandlersParams {
 
 export interface ITemplateParams {
   file: IUpploadFile;
+  uppload: Uppload;
   translate: ITranslator;
 }
 export interface IServiceTemplateParams {

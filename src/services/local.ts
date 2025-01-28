@@ -81,7 +81,11 @@ export default class Local extends UpploadService {
               new Error(
                 params.translate(
                   "errors.file_too_large",
-                  formatBytes(this.maxFileSize)
+                  formatBytes(
+                    this.maxFileSize,
+                    params.uppload.formatBytesDecimals,
+                    params.uppload.formatBytesDecimalSystem
+                  )
                 )
               )
             );
@@ -134,7 +138,11 @@ export default class Local extends UpploadService {
               new Error(
                 params.translate(
                   "errors.file_too_large",
-                  formatBytes(this.maxFileSize)
+                  formatBytes(
+                    this.maxFileSize,
+                    params.uppload.formatBytesDecimals,
+                    params.uppload.formatBytesDecimalSystem
+                  )
                 )
               )
             );
