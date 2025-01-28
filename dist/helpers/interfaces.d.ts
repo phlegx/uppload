@@ -42,6 +42,8 @@ export interface IUpploadSettings {
     focusTrapOptions?: Options;
     customid?: string;
     wrapper?: string;
+    formatBytesDecimals?: number;
+    formatBytesDecimalSystem?: boolean;
 }
 export interface IHandlersParams {
     upload: (file: Blob) => Promise<string>;
@@ -54,6 +56,7 @@ export interface IHandlersParams {
 }
 export interface ITemplateParams {
     file: IUpploadFile;
+    uppload: Uppload;
     translate: ITranslator;
 }
 export interface IServiceTemplateParams {

@@ -8,6 +8,7 @@ export declare const minifyHTML: (html: string) => string;
  * Returns a formatted version of the bytes
  * @param bytes - The bytes to format
  * @param decimals - The number of decimals to show
+ * @param decimalSystem - The boolean for decimal base system
  * @returns The formatted string
  */
-export declare const formatBytes: (bytes: number, decimals?: number) => string;
+export declare const formatBytes: (bytes: number, decimals?: number, decimalSystem?: boolean) => string;

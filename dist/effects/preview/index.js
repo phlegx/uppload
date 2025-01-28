@@ -1,4 +1,4 @@
-var c=Object.defineProperty;var p=(r,t,e)=>t in r?c(r,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):r[t]=e;var i=(r,t,e)=>(p(r,typeof t!="symbol"?t+"":t,e),e);import{UpploadEffect as m}from"../../effect.js";import{fitImageToContainer as d}from"../../helpers/elements.js";import{formatBytes as k}from"../../helpers/utils.js";class g extends m{constructor(){super(...arguments);i(this,"name","preview");i(this,"icon",'<svg aria-hidden="true" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><g transform="translate(1 18)" fill="#000" fill-rule="nonzero"><path d="M244 40h-29V10c0-6-5-10-10-10H10C4 0 0 4 0 10v160c0 5 4 10 10 10h29v30c0 6 4 10 9 10h195c6 0 10-4 10-10V50c0-5-4-10-9-10zm-10 136l-40-45c-4-5-11-5-15 0l-17 19-38-45c-4-5-13-5-17 0l-49 58V60h176v116zM19 160V20h176v20H49c-6 0-10 5-10 10v110H19z"/><ellipse cx="202.5" cy="94" rx="15.5" ry="16"/></g></svg>');i(this,"template",({file:e})=>e.blob.type.startsWith("image/")?`
+var c=Object.defineProperty;var m=(r,t,e)=>t in r?c(r,t,{enumerable:!0,configurable:!0,writable:!0,value:e}):r[t]=e;var i=(r,t,e)=>(m(r,typeof t!="symbol"?t+"":t,e),e);import{UpploadEffect as p}from"../../effect.js";import{fitImageToContainer as k}from"../../helpers/elements.js";import{formatBytes as d}from"../../helpers/utils.js";class g extends p{constructor(){super(...arguments);i(this,"name","preview");i(this,"icon",'<svg aria-hidden="true" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><g transform="translate(1 18)" fill="#000" fill-rule="nonzero"><path d="M244 40h-29V10c0-6-5-10-10-10H10C4 0 0 4 0 10v160c0 5 4 10 10 10h29v30c0 6 4 10 9 10h195c6 0 10-4 10-10V50c0-5-4-10-9-10zm-10 136l-40-45c-4-5-11-5-15 0l-17 19-38-45c-4-5-13-5-17 0l-49 58V60h176v116zM19 160V20h176v20H49c-6 0-10 5-10 10v110H19z"/><ellipse cx="202.5" cy="94" rx="15.5" ry="16"/></g></svg>');i(this,"template",({file:e,uppload:s})=>e.blob.type.startsWith("image/")?`
         <div class="uppload-preview-element">
           <img style="width: 20px" alt="" src="${URL.createObjectURL(e.blob)}">
         </div>
@@ -26,8 +26,8 @@ var c=Object.defineProperty;var p=(r,t,e)=>t in r?c(r,t,{enumerable:!0,configura
         </div>
         <div class="uppload-file-info">
           <div class="uppload-file-name">${e.name}</div>
-          <div class="uppload-file-size">${k(e.blob.size)}</div>
+          <div class="uppload-file-size">${d(e.blob.size,s.formatBytesDecimals,s.formatBytesDecimalSystem)}</div>
         </div>
       </div>
-    `);i(this,"handlers",e=>{var s,l,n;if((n=(l=(s=e.uppload.file)==null?void 0:s.blob)==null?void 0:l.type)==null?void 0:n.startsWith("image/")){const o=e.uppload.container.querySelector(".uppload-preview-element img");o&&d(e,o)}else{const o=e.uppload.container.querySelector(".uppload-effect");o&&(o.style.opacity="1")}})}}export{g as default};
+    `);i(this,"handlers",e=>{var l,n,a;if((a=(n=(l=e.uppload.file)==null?void 0:l.blob)==null?void 0:n.type)==null?void 0:a.startsWith("image/")){const o=e.uppload.container.querySelector(".uppload-preview-element img");o&&k(e,o)}else{const o=e.uppload.container.querySelector(".uppload-effect");o&&(o.style.opacity="1")}})}}export{g as default};
 //# sourceMappingURL=index.js.map

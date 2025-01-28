@@ -25,6 +25,8 @@ export declare class Uppload implements IUppload {
     transitionDuration: number;
     uId: string;
     wrapper: string;
+    formatBytesDecimals: number;
+    formatBytesDecimalSystem: boolean;
     /**
      * Create a new Uppload instance
      * @param settings - Uppload instance settings
