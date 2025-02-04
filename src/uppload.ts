@@ -78,6 +78,7 @@ export class Uppload implements IUppload {
     if (wrapper) wrapper.appendChild(this.container);
     this.focusTrap = createFocusTrap(this.container, {
       initialFocus: () => this.container.querySelector("button"),
+      fallbackFocus: () => this.container.querySelector("button"),
       ...this.focusTrapOptions,
     } as Options);
     requestAnimationFrame(() => this.update());
