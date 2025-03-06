@@ -45,7 +45,7 @@ export class Uppload implements IUppload {
   activeEffect = "";
   settings: IUpploadSettings;
   container: HTMLDivElement;
-  focusTrap: FocusTrap;
+  focusTrap: FocusTrap | undefined;
   file: IUpploadFile = { blob: new Blob() };
   lang: ILanguage = {};
   focusTrapOptions: Options = {};
@@ -76,11 +76,13 @@ export class Uppload implements IUppload {
       ? document.querySelector(this.wrapper) ?? document.body
       : document.body;
     if (wrapper) wrapper.appendChild(this.container);
-    this.focusTrap = createFocusTrap(this.container, {
-      initialFocus: () => this.container.querySelector("button"),
-      fallbackFocus: () => this.container.querySelector("button"),
-      ...this.focusTrapOptions,
-    } as Options);
+    if (!this.settings.disableFocusTrap) {
+      this.focusTrap = createFocusTrap(this.container, {
+        initialFocus: () => this.container.querySelector("button"),
+        fallbackFocus: () => this.container.querySelector("button"),
+        ...this.focusTrapOptions,
+      } as Options);
+    }
     requestAnimationFrame(() => this.update());
 
     /**
@@ -317,10 +319,10 @@ export class Uppload implements IUppload {
     window.requestAnimationFrame(() => this.handlers());
     if (!this.isOpen) {
       this.container.classList.remove("visible");
-      this.focusTrap.deactivate();
+      this.focusTrap?.deactivate();
     } else {
       this.container.classList.add("visible");
-      this.focusTrap.activate();
+      this.focusTrap?.activate();
     }
     const effectsNav = this.container.querySelector(
       "footer.effects-nav .effects-tabs"

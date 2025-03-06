@@ -40,6 +40,7 @@ export interface IUpploadSettings {
   disableEffectsNavbar?: boolean;
   disableCancelButton?: boolean;
   disableUploadButton?: boolean;
+  disableFocusTrap?: boolean;
   defaultModalOpen?: boolean;
   defaultServiceCancelButton?: string;
   focusTrapOptions?: Options;
