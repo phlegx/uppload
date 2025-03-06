@@ -14,7 +14,7 @@ export declare class Uppload implements IUppload {
     activeEffect: string;
     settings: IUpploadSettings;
     container: HTMLDivElement;
-    focusTrap: FocusTrap;
+    focusTrap: FocusTrap | undefined;
     file: IUpploadFile;
     lang: ILanguage;
     focusTrapOptions: Options;
