@@ -1,6 +1,16 @@
 import { UpploadEffect } from '../../effect';
+import { default as Cropper } from 'cropperjs';
 import { IHandlersParams, ITemplateParams, IUpploadFile } from '../../helpers/interfaces';
 type CropNum = 1 | 2 | 3 | undefined;
+interface CropEffectOptions extends Partial<Cropper.Options> {
+    aspectRatio?: number;
+    aspectRatioOptions?: {
+        [index: string]: number;
+    };
+    hideAspectRatioSettings?: boolean;
+    autoCropArea?: CropNum;
+    viewMode?: CropNum;
+}
 export default class Crop extends UpploadEffect {
     name: string;
     icon: string;
@@ -12,15 +22,8 @@ export default class Crop extends UpploadEffect {
     autoCropArea: CropNum;
     viewMode: CropNum;
     originalFile: IUpploadFile;
-    constructor({ aspectRatio, aspectRatioOptions, hideAspectRatioSettings, autoCropArea, viewMode, }?: {
-        aspectRatio?: number;
-        aspectRatioOptions?: {
-            [index: string]: number;
-        };
-        hideAspectRatioSettings?: boolean;
-        autoCropArea?: CropNum;
-        viewMode?: CropNum;
-    });
+    cropperOptions: Partial<Cropper.Options>;
+    constructor({ aspectRatio, aspectRatioOptions, hideAspectRatioSettings, autoCropArea, viewMode, ...additionalOptions }?: CropEffectOptions);
     template: ({ file, translate }: ITemplateParams) => string;
     handlers: (params: IHandlersParams) => void;
 }
