@@ -13,6 +13,14 @@ import {
 
 type CropNum = 1 | 2 | 3 | undefined;
 
+interface CropEffectOptions extends Partial<Cropper.Options> {
+  aspectRatio?: number;
+  aspectRatioOptions?: { [index: string]: number };
+  hideAspectRatioSettings?: boolean;
+  autoCropArea?: CropNum;
+  viewMode?: CropNum;
+}
+
 export default class Crop extends UpploadEffect {
   name = "crop";
   icon = `<svg aria-hidden="true" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path d="M74 0v182h134v-25h-26V74H99V48h96c4 0 7 1 9 4 3 2 4 5 4 9v121h48v26h-48v48h-26v-48H61a13 13 0 01-13-13V74H0V48h48V0h26z" fill="#000" fill-rule="nonzero"/></svg>`;
@@ -26,6 +34,7 @@ export default class Crop extends UpploadEffect {
   autoCropArea: CropNum = 1;
   viewMode: CropNum = 1;
   originalFile: IUpploadFile = { blob: new Blob() };
+  cropperOptions: Partial<Cropper.Options> = {};
 
   constructor({
     aspectRatio,
@@ -33,13 +42,8 @@ export default class Crop extends UpploadEffect {
     hideAspectRatioSettings,
     autoCropArea,
     viewMode,
-  }: {
-    aspectRatio?: number;
-    aspectRatioOptions?: { [index: string]: number };
-    hideAspectRatioSettings?: boolean;
-    autoCropArea?: CropNum;
-    viewMode?: CropNum;
-  } = {}) {
+    ...additionalOptions
+  }: CropEffectOptions = {}) {
     super();
     if (aspectRatio) this.aspectRatio = aspectRatio;
     if (aspectRatioOptions) this.aspectRatioOptions = aspectRatioOptions;
@@ -47,6 +51,7 @@ export default class Crop extends UpploadEffect {
     if (viewMode) this.viewMode = viewMode;
     if (hideAspectRatioSettings)
       this.hideAspectRatioSettings = hideAspectRatioSettings;
+    this.cropperOptions = additionalOptions;
   }
 
   template = ({ file, translate }: ITemplateParams) => {
@@ -95,6 +100,7 @@ export default class Crop extends UpploadEffect {
           aspectRatio: this.aspectRatio,
           autoCropArea: this.autoCropArea,
           viewMode: this.viewMode,
+          ...this.cropperOptions,
           ready() {
             canvasToBlob(cropper.getCroppedCanvas(), type).then(blob => {
               originalFile.blob = blob;
